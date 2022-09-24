@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Blog = new Schema({
+const Comment = new Schema({
   id: { type: String, required: true },
+  // post it refers to
+  idPost: {type: String, required: true},
   author: {type: String, required: true},
-  title: {type: String, required: true},
   text: {type: String, required: true},
 })
 
-module.exports = mongoose.model('blog', Blog)
+module.exports = mongoose.model('comment', Comment)

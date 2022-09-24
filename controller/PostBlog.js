@@ -22,6 +22,9 @@ postBlog = (req, res) => {
       return res.status(201).json({
         success: true,
         id: blog._id,
+        title: blog.title,
+        author: blog.author,
+        text: blog.text,
         message: 'Blog post created!',
       })
     })

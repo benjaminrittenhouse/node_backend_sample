@@ -9,6 +9,9 @@ const router = require('./routes/index')
 const getBlogs = require("./controller/getBlogs")
 const postBlog = require("./controller/PostBlog")
 const getBlog = require("./controller/getBlog")
+const postComment = require("./controller/PostComment")
+const getComments = require("./controller/getComments")
+
 
 
 const app = express()
@@ -34,10 +37,30 @@ app.get("/blog/:id", (req, res) => {
 });
 
 // add blog post
-app.get("/blog/post/:title", (req, res) => {
+app.get("/blog/post/:id/:author/:title/:text", (req, res) => {
     // set id
+    req.body.id = req.params.id;
+    req.body.author = req.params.author;
     req.body.title = req.params.title;
+    req.body.text = req.params.text;
     postBlog(req, res);
+});
+
+// add comment to post "id"
+app.get("blog/post/comment/:idPost/:id/:author/:text", (req, res) => {
+    // set id
+    req.body.id = req.params.id;
+    req.body.idPost = req.params.idPost;
+    req.body.author = req.params.author;
+    req.body.text = req.params.text;
+    postComment(req, res);
+});
+
+// get comment based on post id
+app.get("blog/post/comment/:idPost", (req, res) => {
+    // set id
+    req.body.idPost = req.params.idPost;
+    getComments(req, res);
 });
 
 app.listen(port, () => console.log(`Server running on ${port}`))

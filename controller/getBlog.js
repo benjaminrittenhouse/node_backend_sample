@@ -1,9 +1,7 @@
 const Blog = require('../models/blog')
-const mongoose = require('mongoose');
 
 getBlogs = async (req, res) => {
-  const objId = req.body._id;
-  await Blog.find({ _id: objId }, (err, blog) => {
+  await Blog.find({}, (err, blog) => {
     if (err) {
       return res.status(400).json({ success: false, error: err })
     }
@@ -13,7 +11,7 @@ getBlogs = async (req, res) => {
         .json({ success: false, error: `Blog not found` })
     }
     return res.status(200).json({ success: true, data: blog })
-  }).catch(err => console.log(err + " req.body.id: " + req.body.id))
+  }).catch(err => console.log(err))
 }
 
 module.exports = getBlogs

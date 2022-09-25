@@ -2,7 +2,6 @@ const Blog = require('../models/blog')
 
 postBlog = (req, res) => {
   const body = req.body
-
   if (!body) {
     return res.status(400).json({
       success: false,
@@ -21,9 +20,9 @@ postBlog = (req, res) => {
     .then(() => {
       return res.status(201).json({
         success: true,
-        id: blog._id,
-        title: blog.title,
+        _id: blog._id,
         author: blog.author,
+        title: blog.title,
         text: blog.text,
         message: 'Blog post created!',
       })
@@ -31,7 +30,7 @@ postBlog = (req, res) => {
     .catch(error => {
       return res.status(400).json({
         error,
-        message: 'Blog post not created!',
+        message: 'Blog post not created!' + blog.title,
       })
     })
 }

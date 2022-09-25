@@ -1,5 +1,9 @@
 ## Levvel Technical Interview ##
 
+### Ben Rittenhouse: Notes ###
+
+Hello! Check out my test.http file, where I used VScode to keep track of my API calls. I can explain them during our call!
+
 ### Project Setup ###
 - Fork the repository and clone the repository to your local machine.  Documentation on how to do this https://docs.github.com/en/get-started/quickstart/fork-a-repo
 - open the project locally

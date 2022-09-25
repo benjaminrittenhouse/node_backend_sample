@@ -1,7 +1,7 @@
 const Comment = require('../models/comment')
 
-getComments = async (req, res) => {
-  await Comment.find({postId: req.params.postId}, (err, comment) => {
+getAllComments = async (req, res) => {
+  await Comment.find({}, (err, comment) => {
     if (err) {
       return res.status(400).json({ success: false, error: err })
     }
@@ -14,4 +14,4 @@ getComments = async (req, res) => {
   }).catch(err => console.log(err))
 }
 
-module.exports = getComments
+module.exports = getAllComments

@@ -2,7 +2,6 @@ const Comment = require('../models/comment')
 
 postComment = (req, res) => {
   const body = req.body
-
   if (!body) {
     return res.status(400).json({
       success: false,
@@ -10,28 +9,28 @@ postComment = (req, res) => {
     })
   }
 
-  const com = new Comment(body);
+  const comment = new Comment(body)
 
-  if (!com) {
+  if (!comment) {
     return res.status(400).json({ success: false, error: err })
   }
 
-  com
+  comment
     .save()
     .then(() => {
       return res.status(201).json({
         success: true,
-        id: com._id,
-        idPost: com.idPost,
-        author: com.author,
-        text: com.text,
-        message: 'Comment on post created!'
+        _id: comment._id,
+        author: comment.author,
+        text: comment.text,
+        postId: comment.postId,
+        message: 'comment post created!',
       })
     })
     .catch(error => {
       return res.status(400).json({
         error,
-        message: 'Comment not created!',
+        message: 'comment post not created!' + comment.title,
       })
     })
 }

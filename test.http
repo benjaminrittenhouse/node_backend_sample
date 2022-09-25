@@ -1,0 +1,40 @@
+### create blog post
+
+POST http://localhost:3001/api/blog/post HTTP/1.1
+content-type: application/json
+
+{
+    "author": "Peter Parker Again",
+    "title": "Title Example",
+    "text": "This is sample text for a blog post!"
+}
+
+### get blog post
+
+GET http://localhost:3001/api/blog/6330d707b1d8142515b2b011
+
+
+### get all blogs
+
+GET http://localhost:3001/api/blog
+
+
+### create comment
+
+POST http://localhost:3001/api/blog/post/comment/6330d707b1d8142515b2b011 HTTP/1.1
+content-type: application/json
+
+{
+    "author": "Commenter Name",
+    "text": "Nice post! This is another random comment",
+    "postId": "6330d9d48fc801265d290458"
+}
+
+
+### get all comments for ID
+
+GET http://localhost:3001/api/blog/post/comment/6330d9d48fc801265d290458 HTTP/1.1
+
+### get all comments no matter the id
+
+GET http://localhost:3001/api/blog/post/comment HTTP/1.1
